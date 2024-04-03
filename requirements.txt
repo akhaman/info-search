@@ -1,0 +1,5 @@
+requests==2.27.1
+beautifulsoup4~=4.11.2
+pymorphy2~=0.9.1
+nltk~=3.6.7
+pyeda==0.29.0
