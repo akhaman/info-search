@@ -3,3 +3,4 @@ beautifulsoup4~=4.11.2
 pymorphy3
 nltk~=3.6.7
 pyeda==0.29.0
+flask

@@ -69,8 +69,9 @@ def process_query(query: str):
     for lemma in lemmas:
         doc_set = merge_or(doc_set, reverse_index.get(lemma, set()))
     results = {doc: multiply_vectors(lemmas, doc_to_lemma[doc + '.txt'], doc_lengths[doc + '.txt']) for doc in doc_set}
-    return dict(sorted(results.items(), key=lambda r: r[1], reverse=True))
-
+    value = dict(sorted(results.items(), key=lambda r: r[1], reverse=True))
+    print(value)
+    return value
 
 docs_list = os.listdir(LEMMAS_TFIDF)
 doc_to_lemma = load_doc_to_lemma_tf_idf()
@@ -79,14 +80,12 @@ doc_lengths = {doc: calculate_doc_vector_length(doc_to_lemma[doc]) for doc in do
 token_to_lemma = load_lemma_tokens()
 reverse_index = load_inverted_index()
 
-
 if __name__ == '__main__':
-
     while True:
         user_input = input("Input search expression:\n")
         if user_input.lower() == 'exit':
             exit()
         try:
-            print(process_query(user_input))
+            process_query(user_input)
         except Exception as e:
             print(f"Error occurred: {e}. Please try again")
